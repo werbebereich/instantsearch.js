@@ -3,13 +3,9 @@ import { component } from '../lib/suit.js';
 import cx from 'classnames';
 import defaultTemplates from './defaultTemplates';
 
-export default widgetFactory => optionsWithPanelOpts => {
-  const {
-    container,
-    cssClasses,
-    templates = {},
-    collapsible,
-  } = optionsWithPanelOpts;
+export default panelOptions => widgetFactory => widgetOptions => {
+  const { templates = {}, collapsible } = panelOptions;
+  const { container, cssClasses } = widgetOptions;
 
   const allTemplates = {
     ...defaultTemplates,
@@ -24,31 +20,21 @@ export default widgetFactory => optionsWithPanelOpts => {
   });
 
   const widget = widgetFactory({
-    ...optionsWithPanelOpts,
+    ...widgetOptions,
     container: panel.body,
-    templates: {
-      ...optionsWithPanelOpts.templates,
-      header: undefined,
-      footer: undefined,
-      collapseButton: undefined,
-    },
   });
 
   return {
-    getConfiguration: opts =>
-      widget.getConfiguration ? widget.getConfiguration(opts) : {},
-    init: opts => {
-      widget.init(opts);
-    },
+    ...widget,
     render: opts => {
       updatePanel({
         panel,
         renderOpts: opts,
-        constructorOpts: optionsWithPanelOpts,
+        constructorOpts: panelOptions,
       });
+
       widget.render(opts);
     },
-    // forward routing specific methods
   };
 };
 

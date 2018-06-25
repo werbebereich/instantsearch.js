@@ -11,13 +11,15 @@ export default () => {
     .add(
       'default',
       wrapWithHits(container => {
+        const statsWithPanel = instantsearch.wrappers.panel({
+          templates: {
+            header: 'Header!',
+          },
+        })(instantsearch.widgets.stats);
+
         window.search.addWidget(
-          instantsearch.wrappers.panel(instantsearch.widgets.stats)({
+          statsWithPanel({
             container,
-            templates: {
-              header: 'Header!',
-              footer: 'Footer',
-            },
           })
         );
       })
@@ -25,15 +27,16 @@ export default () => {
     .add(
       'collapsible',
       wrapWithHits(container => {
+        const refinemenListWithPanel = instantsearch.wrappers.panel({
+          templates: {
+            header: 'Header!',
+          },
+        })(instantsearch.widgets.refinementList);
+
         window.search.addWidget(
-          instantsearch.wrappers.panel(instantsearch.widgets.refinementList)({
+          refinemenListWithPanel({
             container,
             attributeName: 'brand',
-            templates: {
-              header: 'Header!',
-              footer: 'Footer',
-            },
-            collapsible: true,
           })
         );
       })
