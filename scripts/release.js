@@ -39,7 +39,7 @@ if (ownersFound !== 1) {
   process.exit(1);
 }
 
-// check if branch is clean with all changes commited
+// check if branch is clean with all changes committed
 const uncommitedChanges = shell
   .exec('git status --porcelain')
   .toString()

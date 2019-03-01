@@ -29,7 +29,7 @@ class BrowserHistory {
    * the storage adaptor will mapped all syncable keys to the query string of the URL. The first
    * parameter is a utility object that has two methods: `stringify` that creates a query string
    * from an object and `parse` that transforms a query string into an object.
-   * @param {function(qs): object} [$0.parseURL] parses an URL into an object. It should symetrical
+   * @param {function(qs): object} [$0.parseURL] parses an URL into an object. It should symmetrical
    * to `createURL`. It gets as an argument an object that contains two methods: `stringify` that
    * creates a query string from an object and `parse` that transforms a query string into an object.
    */

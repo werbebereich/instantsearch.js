@@ -1387,7 +1387,7 @@ See documentation: https://www.algolia.com/doc/api-reference/widgets/refinement-
             facetAttribute: ['value or'],
           },
         };
-        // The current search is emtpy
+        // The current search is empty
         const searchParametersBefore = SearchParameters.make(helper.state);
         const searchParametersAfter = widget.getWidgetSearchParameters(
           searchParametersBefore,

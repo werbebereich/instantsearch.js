@@ -16,7 +16,7 @@ export default class RoutingManager {
   init({ state }) {
     // store the initial state from the storage
     // so that we can compare it with the state after the first render
-    // in case the searchFunction has modifyied it.
+    // in case the searchFunction has modified it.
     this.initState = this.getAllUIStates({
       searchParameters: state,
     });

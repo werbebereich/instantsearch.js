@@ -1805,7 +1805,7 @@ hideContainerWhenNoResults
 
 ### Bug Fixes
 
-* **doc:** All wigdets in docs are not anymore linked together #fix #446 ([4361320](https://github.com/algolia/instantsearch.js/commit/4361320)), closes [#446](https://github.com/algolia/instantsearch.js/issues/446)
+* **doc:** All widgets in docs are not anymore linked together #fix #446 ([4361320](https://github.com/algolia/instantsearch.js/commit/4361320)), closes [#446](https://github.com/algolia/instantsearch.js/issues/446)
 * **hitsPerPageSelector:** Issue when state did not have a `hitsPerPage` ([dc9371c](https://github.com/algolia/instantsearch.js/commit/dc9371c))
 
 
