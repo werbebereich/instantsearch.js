@@ -1,13 +1,23 @@
-import { highlight, snippet } from '../helpers';
+import { Omit } from '../types';
+import {
+  highlight,
+  snippet,
+  HighlightOptions,
+  SnippetOptions,
+} from '../helpers';
+
+type HoganRenderer = (value: any) => string;
 
 export default function({ numberLocale }) {
   return {
-    formatNumber(number, render) {
-      return Number(render(number)).toLocaleString(numberLocale);
+    formatNumber(value: number, render: HoganRenderer) {
+      return Number(render(value)).toLocaleString(numberLocale);
     },
-    highlight(options, render) {
+    highlight(options: string, render: HoganRenderer) {
       try {
-        const highlightOptions = JSON.parse(options);
+        const highlightOptions: Omit<HighlightOptions, 'hit'> = JSON.parse(
+          options
+        );
 
         return render(
           highlight({
@@ -21,9 +31,9 @@ The highlight helper expects a JSON object of the format:
 { "attribute": "name", "highlightedTagName": "mark" }`);
       }
     },
-    snippet(options, render) {
+    snippet(options: string, render: HoganRenderer) {
       try {
-        const snippetOptions = JSON.parse(options);
+        const snippetOptions: Omit<SnippetOptions, 'hit'> = JSON.parse(options);
 
         return render(
           snippet({

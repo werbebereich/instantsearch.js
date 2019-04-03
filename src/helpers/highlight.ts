@@ -1,16 +1,26 @@
+import { Hit } from '../types';
 import { getPropertyByPath } from '../lib/utils';
 import { TAG_REPLACEMENT } from '../lib/escape-highlight';
 import { component } from '../lib/suit';
 
+export type HighlightOptions = {
+  attribute: string;
+  highlightedTagName?: string;
+  hit: Hit;
+};
+
 const suit = component('Highlight');
 
-export default function highlight({
-  attribute,
-  highlightedTagName = 'mark',
-  hit,
-} = {}) {
+export default function highlight(
+  {
+    attribute,
+    highlightedTagName = 'mark',
+    hit,
+  }: HighlightOptions = {} as HighlightOptions
+): string {
   const attributeValue =
-    getPropertyByPath(hit, `_highlightResult.${attribute}.value`) || '';
+    (getPropertyByPath(hit, `_highlightResult.${attribute}.value`) as string) ||
+    '';
 
   const className = suit({
     descendantName: 'highlighted',
