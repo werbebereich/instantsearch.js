@@ -11,13 +11,11 @@ export type SnippetOptions = {
 
 const suit = component('Snippet');
 
-export default function snippet(
-  {
-    attribute,
-    highlightedTagName = 'mark',
-    hit,
-  }: SnippetOptions = {} as SnippetOptions
-) {
+export default function snippet({
+  attribute,
+  highlightedTagName = 'mark',
+  hit,
+}: SnippetOptions) {
   const attributeValue =
     (getPropertyByPath(hit, `_snippetResult.${attribute}.value`) as string) ||
     '';

@@ -11,13 +11,11 @@ export type HighlightOptions = {
 
 const suit = component('Highlight');
 
-export default function highlight(
-  {
-    attribute,
-    highlightedTagName = 'mark',
-    hit,
-  }: HighlightOptions = {} as HighlightOptions
-): string {
+export default function highlight({
+  attribute,
+  highlightedTagName = 'mark',
+  hit,
+}: HighlightOptions): string {
   const attributeValue =
     (getPropertyByPath(hit, `_highlightResult.${attribute}.value`) as string) ||
     '';
