@@ -6,7 +6,7 @@ import { component } from '../lib/suit';
 export type HighlightOptions = {
   attribute: string;
   highlightedTagName?: string;
-  hit: Hit;
+  hit: Partial<Hit>;
 };
 
 const suit = component('Highlight');
